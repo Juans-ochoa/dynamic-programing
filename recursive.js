@@ -29,3 +29,19 @@ const power = (x = 0, n = 0) => {
 };
 
 console.log(power(2, -2));
+
+const factorialMemo = (number, memo = {}) => {
+  if (number === 0 || number === 1) {
+    return 1;
+  }
+
+  if (number in memo) {
+    return memo[number];
+  } else {
+    const result = number * factorialMemo(number - 1, memo);
+    memo[number] = result;
+    return result;
+  }
+};
+
+console.log(factorialMemo(10));
